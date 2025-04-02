@@ -4,23 +4,17 @@ def show():
     # Custom CSS Styling
     st.markdown("""
         <style>
-            /* Page Background */
-            .stApp {
-                background-color: #E3F2FD;
-                padding: 20px;
-            }
 
             /* Headings */
             .title {
                 text-align: center;
-                color: #2C3E50;
+                color: white;
                 font-size: 40px;
                 font-weight: bold;
                 margin-top: 20px;
             }
             
             .section-title {
-                color: #1B4F72;
                 font-size: 28px;
                 margin-top: 30px;
                 font-weight: bold;
@@ -42,7 +36,7 @@ def show():
             /* Lists */
             .resource-list {
                 font-size: 18px;
-                color: #2C3E50;
+                color: white;
                 padding-left: 20px;
             }
 
@@ -65,7 +59,7 @@ def show():
     """, unsafe_allow_html=True)
 
     # Title
-    st.markdown('<p class="title">📚 Mental Health Resources</p>', unsafe_allow_html=True)
+    st.markdown('<h2 class="title">📚 Mental Health Resources</h2>', unsafe_allow_html=True)
 
     # Organizations & Help Centers
     st.markdown('<p class="section-title">🏥 Organizations & Help Centers</p>', unsafe_allow_html=True)
