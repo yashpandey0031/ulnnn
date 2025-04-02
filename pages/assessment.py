@@ -60,7 +60,7 @@ def show():
     df['Cluster_Name'] = df['Cluster'].map(cluster_names)
 
     # Streamlit App
-    st.title("Mental Health Prediction App")
+    st.markdown('<h2 class="title">📚 Mental Health Prediction App</h2>', unsafe_allow_html=True)
     st.write("Enter details to predict mental health group.")
 
     # User input fields
