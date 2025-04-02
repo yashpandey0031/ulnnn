@@ -53,9 +53,9 @@ def show():
     # Define cluster names
     cluster_names = {
         0: "Low-Stress Healthy Group",
-        1: "High-Stress Unhealthy Lifestyle",
-        2: "Balanced Lifestyle with Moderate Stress",
-        3: "Workaholic with High Stress"
+        1: "Balanced Lifestyle with Moderate Stress",
+        2: "High-Stress Workaholic Lifestyle",
+        3: "Unhealthy Lifestyle with Extreme Stress"
     }
     df['Cluster_Name'] = df['Cluster'].map(cluster_names)
 
@@ -65,23 +65,23 @@ def show():
 
     # User input fields
     def user_input():
-        age = st.number_input("Age", min_value=10, max_value=100, value=30)
+        age = st.number_input("Age", min_value=10, max_value=100, value=25)
 
         gender = st.selectbox("Gender", list(category_mappings['Gender'].keys()))
         occupation = st.selectbox("Occupation", list(category_mappings['Occupation'].keys()))
         country = st.selectbox("Country", list(category_mappings['Country'].keys()))
-        severity = st.selectbox("Severity", list(category_mappings['Severity'].keys()))
-        consultation_history = st.selectbox("Consultation History", list(category_mappings['Consultation_History'].keys()))
+        severity = st.selectbox("Severity of your Mental condition", list(category_mappings['Severity'].keys()))
+        consultation_history = st.selectbox("Consultation History regarding Mental Health", list(category_mappings['Consultation_History'].keys()))
         stress_level = st.selectbox("Stress Level", list(category_mappings['Stress_Level'].keys()))
         diet_quality = st.selectbox("Diet Quality", list(category_mappings['Diet_Quality'].keys()))
         smoking_habit = st.selectbox("Smoking Habit", list(category_mappings['Smoking_Habit'].keys()))
         alcohol_consumption = st.selectbox("Alcohol Consumption", list(category_mappings['Alcohol_Consumption'].keys()))
         medication_usage = st.selectbox("Medication Usage", list(category_mappings['Medication_Usage'].keys()))
 
-        sleep_hours = st.number_input("Sleep Hours", min_value=0.0, max_value=24.0, value=7.0)
-        work_hours = st.number_input("Work Hours", min_value=0, max_value=100, value=40)
-        physical_activity = st.number_input("Physical Activity Hours", min_value=0, max_value=24, value=5)
-        social_media = st.number_input("Social Media Usage (Hours)", min_value=0, max_value=24, value=3)
+        sleep_hours = st.number_input("Sleep Hours (per day)", min_value=0.0, max_value=18.0, value=7.0)
+        work_hours = st.number_input("Work Hours (per week)", min_value=0, max_value=70, value=40)
+        physical_activity = st.number_input("Physical Activity Hours (per week)", min_value=0, max_value=35, value=5)
+        social_media = st.number_input("Social Media Usage (per day)", min_value=0, max_value=40, value=3)
 
         # Convert selected values into encoded values before using them in the model
         data = pd.DataFrame([[
