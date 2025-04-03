@@ -1,142 +1,186 @@
-import streamlit as st
+import streamlit as st 
 
 def show():
-    # Custom CSS Styling
+        # Custom CSS Styling
     st.markdown("""
         <style>
-
-            /* Headings */
             .title {
                 text-align: center;
                 color: white;
-                font-size: 40px;
+                font-size: 50px;
                 font-weight: bold;
                 margin-top: 20px;
             }
-            
             .section-title {
-                font-size: 28px;
-                margin-top: 30px;
+                font-size: 32px;
+                margin-top: 40px;
                 font-weight: bold;
             }
-
-            /* Links Styling */
-            .resource-links a {
-                color: #154360;
-                text-decoration: none;
-                font-size: 18px;
-                font-weight: bold;
+            .resource-box {
+                background: white;  /* Changed from #FFFFFF to white */
+                padding: 20px;
+                border-radius: 20px;
+                margin: 20px auto;  /* Center content within a fixed width */
+                width: 80%;  /* Ensuring it doesn’t take the full page */
+                color: black; /* Changed from white to black for readability */
             }
-
-            .resource-links a:hover {
-                color: #1B4F72;
-                text-decoration: underline;
-            }
-
-            /* Lists */
             .resource-list {
-                font-size: 18px;
-                color: white;
+                font-size: 20px;
                 padding-left: 20px;
             }
-
-            /* Centered Button */
+            .section-unhealthy {
+                background: #880000; /*  Maroon */
+                padding: 20px;
+                border-radius: 20px;
+                margin: 20px 0;
+                color: white;
+                box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            }
+            .section-highstress {
+                background: #FF4500; /* Orange Red */
+                padding: 20px;
+                border-radius: 20px;
+                margin: 20px 0;
+                color: white;
+                box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            }
+            .section-balanced {
+                background: #f7a239; /* Amber */
+                padding: 20px;
+                border-radius: 20px;
+                margin: 20px 0;
+                color: white;
+                box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            }
+            .section-healthy {
+                background: #228B22; /* Forest Green */
+                padding: 20px;
+                border-radius: 20px;
+                margin: 20px 0;
+                color: white;
+                box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            }
+            .resource-links a {
+                color: #FFD700;
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .resource-links a:hover {
+                color: #FFA500;
+                text-decoration: underline;
+            }
             .stButton>button {
                 display: block;
                 margin: 20px auto;
-                background-color: #1B4F72;
-                color: white;
+                background-color: #FFD700;
+                color: black;
                 border-radius: 10px;
-                font-size: 18px;
-                padding: 12px 24px;
+                font-size: 20px;
+                padding: 14px 28px;
                 font-weight: bold;
             }
-
             .stButton>button:hover {
-                background-color: #154360;
+                background-color: #FFA500;
             }
+                
         </style>
     """, unsafe_allow_html=True)
 
     # Title
-    st.markdown('<h2 class="title">📚 Mental Health Resources</h2>', unsafe_allow_html=True)
+    st.markdown('<h1 class="title">📚 Mental Health Resources</h1>', unsafe_allow_html=True)
 
-    # Organizations & Help Centers
-    st.markdown('<p class="section-title">🏥 Organizations & Help Centers</p>', unsafe_allow_html=True)
-    st.markdown("""
-    <ul class="resource-list">
-        <li><a href="https://www.who.int" class="resource-links">World Health Organization (WHO)</a></li>
-        <li><a href="https://www.nami.org" class="resource-links">National Alliance on Mental Illness (NAMI)</a></li>
-        <li><a href="https://www.mhanational.org" class="resource-links">Mental Health America (MHA)</a></li>
-        <li><a href="https://www.apa.org" class="resource-links">American Psychological Association (APA)</a></li>
-        <li><a href="https://www.samhsa.gov" class="resource-links">SAMHSA (US Government Mental Health)</a></li>
-    </ul>
-    """, unsafe_allow_html=True)
+    stress_levels = {
+        "Unhealthy Lifestyle with Extreme Stress": {
+            "Helplines": [
+                "<a href='http://healthcollective.in/suicide-prevention-helplines/' target='_blank'>Suicide Prevention / Mental Health Helplines</a>",
+                "<a href='https://findahelpline.com/' target='_blank'>Find A Helpline</a>",
+                "<a href='https://www.drishtiias.com/daily-news-analysis/kiran-mental-health-rehabilitation-helpline' target='_blank'>Kiran Mental Health Rehabilitation Helpline</a>",
+                "<a href='https://telemanas.mohfw.gov.in/home' target='_blank'>National Tele Mental Health Programme of India</a>"
+            ],
+            "Support Communities": [
+                "<a href='https://www.thelivelovelaughfoundation.org/find-help/helplines' target='_blank'>The Live Love Laugh Foundation for Free Helpline and Counselling</a>",
+                "<a href='https://www.7cups.com/' target='_blank'>7 Cups (Free Emotional Support)</a>",
+                "<a href='https://www.reddit.com/r/mentalhealth/' target='_blank'>r/MentalHealth on Reddit</a>",
+                "<a href='https://www.vandrevalafoundation.com/' target='_blank'>Vandrevala Foundation For Counselling</a>"
+            ],
+            "Additional Resources": [
+                "<a href='https://www.who.int' target='_blank'>World Health Organization (WHO)</a>",
+                "<a href='https://www.sangath.in/' target='_blank'>Sangath</a>",
+                "<a href='https://icallhelpline.org/' target='_blank'>iCall Tata Service Helpline</a>"
+            ]
+        },
+        "High-Stress Workaholic Lifestyle": {
+            "Books": [
+                "The Mindful Way Through Depression - Mark Williams",
+                "Burnout: The Secret to Unlocking the Stress Cycle - Emily Nagoski & Amelia Nagoski",
+                "The Joy of Missing Out: Live More by Doing Less - Tanya Dalton",
+                "The Things You Can See Only When You Slow Down - Haemin Sunim"
+            ],
+            "Articles & Research Papers": [
+                "<a href='https://www.mentalhealth.org.uk/explore-mental-health/publications/how-manage-and-reduce-stress' target='_blank'>How to Manage and Reduce Stress</a>",
+                "<a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC4117275/' target='_blank'>Workaholism: An Overview and Current Status of the Research</a>",
+                "<a href='https://hbr.org/2024/09/a-workaholics-guide-to-reclaiming-your-life' target='_blank'>A Workaholic’s Guide to Reclaiming Your Life</a>"
+            ],
+            "Helplines": [
+                "SAMHSA (US Government Mental Health) - 1-800-662-HELP (4357)",
+                "Vandrevala Foundation Helpline (India) - 1860 266 2345",
+                "iCall - Tata Institute of Social Sciences (India) - +91 9152987821"
+            ]
+        },
+        "Balanced Lifestyle with Moderate Stress": {
+            "Books": [
+                "Atomic Habits - James Clear",
+                "The Little Book of Hygge - Meik Wiking",
+                "Feeling Good: The New Mood Therapy - David D. Burns",
+                "Lost Connections - Johann Hari"
+            ],
+            "Courses": [
+                "Mindfulness-Based Stress Reduction (MBSR) Course",
+                "The Science of Stress Management - Udemy",
+                "The Creative Toolkit: 6 Techniques to Spark Original Ideas - Skillshare"
+            ],
+            "Apps": [
+                "Woebot (AI Chat for Mental Health)",
+                "Forest (Gamified Approach for Focused Work)",
+                "MyFitnessPal (Mindful Nutrition Tracking)"
+            ]
+        },
+        "Low-Stress Healthy Group": {
+            "Books": [
+                "The Happiness Trap - Russ Harris",
+                "Atomic Habits - James Clear",
+                "The Upward Spiral - Alex Korb",
+                "The Blue Zones: 9 Lessons for Living Longer - Dan Buettner"
+            ],
+            "Courses": [
+                "The Science of Well-Being - Yale (Free)",
+                "Positive Psychology - UPenn"
+            ],
+            "Apps": [
+                "Headspace (Meditation & Mindfulness)",
+                "Calm (Sleep & Relaxation)"
+            ]
+        }
+    }
 
-    # Recommended Books
-    st.markdown('<p class="section-title">📖 Recommended Books</p>', unsafe_allow_html=True)
-    st.markdown("""
-    <ul class="resource-list">
-        <li>The Happiness Trap - Russ Harris</li>
-        <li>Atomic Habits - James Clear</li>
-        <li>Feeling Good: The New Mood Therapy - David D. Burns</li>
-        <li>Lost Connections - Johann Hari</li>
-        <li>The Mindful Way Through Depression - Mark Williams</li>
-        <li>The Upward Spiral - Alex Korb</li>
-    </ul>
-    """, unsafe_allow_html=True)
+    for level, categories in stress_levels.items():
+        section_class = "section-healthy"  # Default
+        if "Unhealthy" in level:
+            section_class = "section-unhealthy"
+        elif "High-Stress" in level:
+            section_class = "section-highstress"
+        elif "Balanced" in level:
+            section_class = "section-balanced"
 
-    # Research Papers
-    st.markdown('<p class="section-title">📄 Research Papers & Articles</p>', unsafe_allow_html=True)
-    st.markdown("""
-    <ul class="resource-list">
-        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3584580/" class="resource-links">Cognitive Behavioral Therapy: An Overview</a></li>
-        <li><a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2019.00487/full" class="resource-links">Effects of Meditation on Mental Health</a></li>
-        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7452876/" class="resource-links">Social Media & Mental Health: A Review</a></li>
-        <li><a href="https://journals.sagepub.com/doi/10.1177/1073858415608147" class="resource-links">Neuroplasticity & Mental Health</a></li>
-    </ul>
-    """, unsafe_allow_html=True)
-
-    # Online Courses
-    st.markdown('<p class="section-title">🎓 Online Courses & Webinars</p>', unsafe_allow_html=True)
-    st.markdown("""
-    <ul class="resource-list">
-        <li><a href="https://www.coursera.org/learn/the-science-of-well-being" class="resource-links">The Science of Well-Being – Yale (Free)</a></li>
-        <li><a href="https://palousemindfulness.com" class="resource-links">Mindfulness-Based Stress Reduction (MBSR) Course</a></li>
-        <li><a href="https://www.coursera.org/specializations/positive-psychology" class="resource-links">Positive Psychology – UPenn</a></li>
-    </ul>
-    """, unsafe_allow_html=True)
-
-    # Mental Health Apps
-    st.markdown('<p class="section-title">📱 Mental Health Apps</p>', unsafe_allow_html=True)
-    st.markdown("""
-    <ul class="resource-list">
-        <li><a href="https://www.headspace.com" class="resource-links">Headspace (Meditation & Mindfulness)</a></li>
-        <li><a href="https://www.calm.com" class="resource-links">Calm (Sleep & Relaxation)</a></li>
-        <li><a href="https://woebothealth.com" class="resource-links">Woebot (AI Chat for Mental Health)</a></li>
-    </ul>
-    """, unsafe_allow_html=True)
-
-    # Support Communities
-    st.markdown('<p class="section-title">🤝 Support Communities & Forums</p>', unsafe_allow_html=True)
-    st.markdown("""
-    <ul class="resource-list">
-        <li><a href="https://www.reddit.com/r/mentalhealth/" class="resource-links">r/MentalHealth on Reddit</a></li>
-        <li><a href="https://www.7cups.com" class="resource-links">7 Cups (Free Emotional Support)</a></li>
-    </ul>
-    """, unsafe_allow_html=True)
-
-    # Emergency Helplines
-    st.markdown('<p class="section-title">☎️ Emergency Helplines</p>', unsafe_allow_html=True)
-    st.markdown("""
-    <ul class="resource-list">
-        <li><a href="https://www.crisistextline.org" class="resource-links">Crisis Text Line (Text HOME to 741741)</a></li>
-        <li><a href="https://suicidepreventionlifeline.org" class="resource-links">National Suicide Prevention Lifeline</a></li>
-        <li><a href="https://www.samaritans.org" class="resource-links">Samaritans (UK Helpline)</a></li>
-    </ul>
-    """, unsafe_allow_html=True)
-
-    # Centered Button
-    if st.button("🔍 Explore More Resources"):
-        st.success("Redirecting to additional resources...")
-
+        st.markdown(f'<div class="{section_class}">', unsafe_allow_html=True)  # FIXED
+        st.markdown(f'<h2 class="section-title">{level}</h2>', unsafe_allow_html=True)
+        
+        for category, resources in categories.items():
+            st.markdown(f'<h3>{category}</h3>', unsafe_allow_html=True)
+            st.markdown("<ul class='resource-list'>", unsafe_allow_html=True)
+            for resource in resources:
+                st.markdown(f'<li>{resource}</li>', unsafe_allow_html=True)
+            st.markdown("</ul>", unsafe_allow_html=True)
+        
+        st.markdown('</div>', unsafe_allow_html=True)  # Close div properly
